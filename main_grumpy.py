@@ -8,6 +8,9 @@
 import os
 import glob
 from openai import OpenAI
+from flask import Flask, request, jsonify, render_template
+
+app = Flask(__name__)
 
 #%% Support functions
 
@@ -34,31 +37,29 @@ messages = []
 messages.append({"role": "system", "content": role})
 
 #%% Chat loop
- 
-while True:
-    
-    # Get user input from the terminal
-    
-    prompt = input("User: ")
-    
+@app.route("/chat", methods=['POST'])
+def chat():
+    global messages
+
+    # Get user input from the request
+    prompt = request.json.get('prompt')
+
     # Append user message to inputs
-    
     messages.append({"role": "user", "content": prompt})
-    
-    # Get model response
-    
+        
+    # Get model response    
     response = client.chat.completions.create(
-      model="gpt-3.5-turbo",
-      messages=messages,
-      temperature=1.0).choices[0].message.content
-    
+        model="gpt-3.5-turbo",
+        messages=messages,
+        temperature=1.0
+    ).choices[0].message.content
+        
     # Append model response to messages
-    
     messages.append({"role": "assistant", "content": response})
-    
-    # Print model response
-    
-    print(f"GrumpyAI: {response}\n")
-    
+        
+    # Return model response
+    return jsonify({"response": response})
 
-
+@app.route("/")
+def home():
+    return render_template('index.html')
