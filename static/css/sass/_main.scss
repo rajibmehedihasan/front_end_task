@@ -21,6 +21,7 @@ html {
 .chatbox {
     flex: 1 1 0%;
     padding: 50px 0 20px;
+    overflow: hidden;
 
     &__list {
         display: flex;
@@ -30,6 +31,8 @@ html {
         padding: 0;
         list-style: none;
         gap: 15px;
+        height: 100%;
+
 
         li {
             padding: 15px;
@@ -38,9 +41,18 @@ html {
             display: flex;
             align-self: flex-start;
             border-radius: 10px;
+            align-items: flex-start;
+            gap: 10px;
+
+            svg {
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                padding: 2px;
+                min-width: 24px;
+                height: 24px;
+                border-radius: 50%;
+            }
 
             &:nth-child(odd) {
-                display: flex;
                 align-self: flex-end;
                 flex-direction: row-reverse;
             }
