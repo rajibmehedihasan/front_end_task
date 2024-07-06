@@ -45,6 +45,7 @@ function sendMessage() {
 inputForm.addEventListener("submit", function (e) {
     e.preventDefault();
     sendMessage();
+    userInput.value = "";
 });
 
 userInput.addEventListener("keypress", function (e) {
