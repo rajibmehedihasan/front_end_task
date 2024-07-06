@@ -1,9 +1,9 @@
 const chatbox = document.getElementById("chatbox");
 const userInput = document.getElementById("userInput");
-const sendButton = document.getElementById("sendButton");
+const inputForm = document.getElementById("userInputForm");
 
 function addMessage(sender, message) {
-    const messageElement = document.createElement("p");
+    const messageElement = document.createElement("li");
     messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
     chatbox.appendChild(messageElement);
     chatbox.scrollTop = chatbox.scrollHeight;
@@ -22,7 +22,6 @@ function sendMessage() {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
                 addMessage("Grumpy AI", data.response);
             })
             .catch((error) => {
@@ -32,9 +31,22 @@ function sendMessage() {
     }
 }
 
-sendButton.addEventListener("click", sendMessage);
+inputForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    sendMessage();
+});
+
 userInput.addEventListener("keypress", function (e) {
     if (e.key === "Enter") {
         sendMessage();
     }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const textarea = document.getElementById("userInput");
+
+    textarea.addEventListener("input", function () {
+        this.style.height = "auto";
+        this.style.height = this.scrollHeight + "px";
+    });
 });

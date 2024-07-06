@@ -1,0 +1,23 @@
+.header {
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.dropdown {
+    display: inline-block;
+    cursor: pointer;
+
+    &__text {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    &__options {
+        display: none;
+    }
+}
