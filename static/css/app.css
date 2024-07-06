@@ -726,6 +726,10 @@ html {
 .chatbox__list li:nth-child(odd) {
   align-self: flex-end;
   flex-direction: row-reverse;
+  border-right: 4px solid #082567;
+}
+.chatbox__list li:nth-child(even) {
+  border-left: 4px solid #082567;
 }
 
 .user-input {
