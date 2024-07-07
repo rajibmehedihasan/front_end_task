@@ -798,7 +798,7 @@ html {
 .preview__item {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  position: relative;
 }
 .preview__item img {
   width: 100px;
