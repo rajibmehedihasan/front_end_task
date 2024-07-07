@@ -702,8 +702,11 @@ progress {
   text-align: left;
   transition: background-color 0.2s ease-in;
 }
-.dropdown__options button:hover {
+.dropdown__options button:hover, .dropdown__options button.selected {
   background-color: rgba(0, 0, 0, 0.05);
+}
+.dropdown__options button.selected {
+  color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
 }
 
 body,

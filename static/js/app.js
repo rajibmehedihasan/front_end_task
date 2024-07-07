@@ -1,4 +1,8 @@
-let AI_ROLE = "grumpy";
+let ASSISTANT_TYPE = document
+    .querySelector("[data-assistant][disabled]")
+    .getAttribute("data-assistant");
+
+console.log(ASSISTANT_TYPE);
 
 const chatbox = document.getElementById("chatbox");
 const userInput = document.getElementById("userInput");
@@ -31,7 +35,10 @@ function sendMessage() {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ prompt: message }),
+            body: JSON.stringify({
+                prompt: message,
+                assistant_type: ASSISTANT_TYPE,
+            }),
         })
             .then((response) => response.json())
             .then((data) => {
@@ -85,8 +92,8 @@ dropdownButtons.forEach((button) => {
     button.addEventListener("click", function () {
         dropdownButtons.forEach((btn) => btn.removeAttribute("disabled"));
         button.setAttribute("disabled", true);
-        AI_ROLE = button.getAttribute("data-value");
-        console.log(AI_ROLE);
+        ASSISTANT_TYPE = button.getAttribute("data-assistant");
+        console.log(ASSISTANT_TYPE);
         aiSwitcherText.textContent = button.textContent;
         dropdown.classList.remove("show");
     });
