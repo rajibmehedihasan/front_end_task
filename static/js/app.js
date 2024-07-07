@@ -81,12 +81,12 @@ aiSwitcher.addEventListener("click", function (e) {
     dropdown.classList.toggle("show");
 });
 
-console.log(aiSwitcher, dropdown, dropdownButtons);
 dropdownButtons.forEach((button) => {
     button.addEventListener("click", function () {
         dropdownButtons.forEach((btn) => btn.removeAttribute("disabled"));
         button.setAttribute("disabled", true);
         AI_ROLE = button.getAttribute("data-value");
+        console.log(AI_ROLE);
         aiSwitcherText.textContent = button.textContent;
         dropdown.classList.remove("show");
     });
@@ -95,5 +95,51 @@ dropdownButtons.forEach((button) => {
 document.addEventListener("click", function (e) {
     if (!dropdown.contains(e.target)) {
         dropdown.classList.remove("show");
+    }
+});
+
+/* Preview for file input */
+const fileInput = document.getElementById("fileInput");
+
+fileInput.addEventListener("change", function (e) {
+    const files = e.target.files;
+    const preview = document.getElementById("preview");
+    // preview.innerHTML = "";
+
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            const previewItem = document.createElement("div");
+            previewItem.classList.add("preview-item");
+
+            const img = document.createElement("img");
+            img.src = e.target.result;
+            img.alt = file.name;
+            previewItem.appendChild(img);
+
+            const button = document.createElement("button");
+            button.innerHTML = `
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-x"
+                        viewBox="0 0 16 16"
+                    >
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                    </svg>
+                `;
+            button.addEventListener("click", function () {
+                preview.removeChild(previewItem);
+            });
+            previewItem.appendChild(button);
+
+            preview.appendChild(previewItem);
+        };
+
+        reader.readAsDataURL(file);
     }
 });
