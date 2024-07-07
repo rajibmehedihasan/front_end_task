@@ -650,7 +650,7 @@ progress {
 }
 
 .header {
-  padding: 15px;
+  padding: 10px 15px;
   position: fixed;
   width: 100%;
   left: 0;
@@ -663,13 +663,45 @@ progress {
 .dropdown {
   display: inline-block;
   cursor: pointer;
+  position: relative;
 }
-.dropdown__text {
+.dropdown__btn {
+  padding: 5px 0;
+  cursor: pointer;
+}
+.dropdown__btn__text {
   font-size: 16px;
   font-weight: bold;
 }
 .dropdown__options {
-  display: none;
+  position: absolute;
+  left: 0;
+  top: -2000px;
+  opacity: 0;
+  visibility: hidden;
+  background-color: #fff;
+  width: 200px;
+  padding: 15px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  transform: translate3d(0, -5px, 0);
+  transition: transform 0.2s ease-out;
+  list-style: none;
+  margin: 0;
+}
+.dropdown__options.show {
+  opacity: 1;
+  visibility: visible;
+  top: 100%;
+  transform: translate3d(0, 0, 0);
+}
+.dropdown__options button {
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.2s ease-in;
+}
+.dropdown__options button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 body,

@@ -13,8 +13,9 @@
     <header class="header">
         <div class="container">
             <div class="dropdown">
-                <button class="btn-unstyled dropdown__text">
-                    Grumpy AI
+                <button class="btn-unstyled dropdown__btn" id="aiSwitcher">
+                    <span class="dropdown__btn__text"> Grumpy AI</span>
+
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-chevron-down" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
@@ -23,8 +24,8 @@
                 </button>
 
                 <ul class="dropdown__options">
-                    <li><button class="btn-unstyled">Grumpy AI</button></li>
-                    <li><button class="btn-unstyled">Poet AI</button></li>
+                    <li><button class="btn-unstyled" data-value="grumpy" disabled>Grumpy AI</button></li>
+                    <li><button class="btn-unstyled" data-value="poet">Poet AI</button></li>
                 </ul>
             </div>
         </div>

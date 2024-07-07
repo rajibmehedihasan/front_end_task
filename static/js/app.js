@@ -1,3 +1,5 @@
+let AI_ROLE = "grumpy";
+
 const chatbox = document.getElementById("chatbox");
 const userInput = document.getElementById("userInput");
 const inputForm = document.getElementById("userInputForm");
@@ -50,10 +52,13 @@ inputForm.addEventListener("submit", function (e) {
 
 userInput.addEventListener("keypress", function (e) {
     if (e.key === "Enter") {
+        e.preventDefault();
         sendMessage();
+        userInput.value = "";
     }
 });
 
+//Height Management for Textbox
 document.addEventListener("DOMContentLoaded", function () {
     const textarea = document.getElementById("userInput");
 
@@ -61,4 +66,34 @@ document.addEventListener("DOMContentLoaded", function () {
         this.style.height = "auto";
         this.style.height = this.scrollHeight + "px";
     });
+});
+
+//Select AI
+const aiSwitcher = document.getElementById("aiSwitcher");
+const aiSwitcherText = aiSwitcher.querySelector(".dropdown__btn__text");
+const dropdown = aiSwitcher.parentElement.querySelector(".dropdown__options");
+const dropdownButtons = dropdown.querySelectorAll(".dropdown__options button");
+
+aiSwitcher.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    dropdown.classList.toggle("show");
+});
+
+console.log(aiSwitcher, dropdown, dropdownButtons);
+dropdownButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+        dropdownButtons.forEach((btn) => btn.removeAttribute("disabled"));
+        button.setAttribute("disabled", true);
+        AI_ROLE = button.getAttribute("data-value");
+        aiSwitcherText.textContent = button.textContent;
+        dropdown.classList.remove("show");
+    });
+});
+
+document.addEventListener("click", function (e) {
+    if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove("show");
+    }
 });
