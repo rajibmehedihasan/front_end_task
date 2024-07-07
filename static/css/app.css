@@ -793,11 +793,11 @@ html {
 .preview {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 .preview__item {
   display: flex;
   align-items: center;
-  position: relative;
   margin-bottom: 20px;
 }
 .preview__item img {

@@ -1,12 +1,13 @@
 .preview {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
 
     &__item {
         display: flex;
         align-items: center;
-        position: relative;
         margin-bottom: 20px;
+
 
         img {
             width: 100px;
