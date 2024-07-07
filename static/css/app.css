@@ -653,11 +653,9 @@ progress {
 
 .header {
   padding: 10px 15px;
-  position: fixed;
-  width: 100%;
-  left: 0;
+  position: sticky;
   top: 0;
-  z-index: 99;
+  z-index: 10;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   background-color: #fff;
 }
@@ -717,10 +715,11 @@ html {
 .container {
   max-width: 768px;
   margin: 0 auto;
+  padding: 0 15px;
 }
 
 .main {
-  height: 100%;
+  height: calc(100% - 55px);
 }
 .main__inner {
   display: flex;
@@ -730,18 +729,25 @@ html {
 
 .chatbox {
   flex: 1 1 0%;
-  padding: 50px 0 20px;
   overflow: hidden;
+}
+.chatbox, .chatbox__inner,
+.chatbox .container {
+  height: 100%;
+}
+.chatbox__inner {
+  overflow-y: auto;
+  scrollbar-width: none;
 }
 .chatbox__list {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   margin: 0;
-  padding: 0;
+  padding: 15px 0;
   list-style: none;
   gap: 15px;
-  height: 100%;
+  min-height: 100%;
 }
 .chatbox__list li {
   padding: 15px;
@@ -771,7 +777,7 @@ html {
 
 .user-input {
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 50px;
 }
 
 .preview {

@@ -6,33 +6,44 @@ html {
 .container {
     max-width: 768px;
     margin: 0 auto;
+    padding: 0 15px;
 }
 
 .main {
-    height: 100%;
+    height: calc(100% - 55px);
 
     &__inner {
         display: flex;
         flex-direction: column;
         height: 100%;
+
     }
 }
 
 .chatbox {
     flex: 1 1 0%;
-    padding: 50px 0 20px;
     overflow: hidden;
+
+    &,
+    &__inner,
+    .container {
+        height: 100%;
+    }
+
+    &__inner {
+        overflow-y: auto;
+        scrollbar-width: none;
+    }
 
     &__list {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
         margin: 0;
-        padding: 0;
+        padding: 15px 0;
         list-style: none;
         gap: 15px;
-        height: 100%;
-
+        min-height: 100%;
 
         li {
             padding: 15px;
@@ -67,5 +78,5 @@ html {
 
 .user-input {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 50px;
 }

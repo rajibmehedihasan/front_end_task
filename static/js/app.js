@@ -23,7 +23,8 @@ function addMessage(sender, message) {
     const messageElement = document.createElement("li");
     messageElement.innerHTML = `${userIcon} <span>${message}</span>`;
     chatbox.appendChild(messageElement);
-    chatbox.scrollTop = chatbox.scrollHeight;
+    const chatboxInner = document.querySelector(".chatbox__inner");
+    chatboxInner.scrollTop = chatboxInner.scrollHeight;
 }
 
 function sendMessage() {
