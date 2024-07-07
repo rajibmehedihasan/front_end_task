@@ -57,9 +57,6 @@
             } catch (error) {
                 console.error("Error:", error);
             }
-
-            // Clear user input
-            userInput.value = "";
         }
     }
 
@@ -67,6 +64,8 @@
     inputForm.addEventListener("submit", function (e) {
         e.preventDefault();
         sendMessage();
+        // Clear user input
+        userInput.value = "";
     });
 
     // Event listener for sending message on 'Enter' key press
@@ -74,6 +73,8 @@
         if (e.key === "Enter") {
             e.preventDefault();
             sendMessage();
+            // Clear user input
+            userInput.value = "";
         }
     });
 
