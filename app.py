@@ -45,15 +45,6 @@ def chat():
     
     messages[assistant_type].append({"role": "user", "content": prompt})
     
-    # response = client.chat.completions.create(
-    #     model="gpt-3.5-turbo",
-    #     messages=messages[assistant_type],
-    #     temperature=1.0
-    # ).choices[0].message.content
-    
-    # messages[assistant_type].append({"role": "assistant", "content": response})
-    # return jsonify({"response": response})
-
     # Get model response    
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",

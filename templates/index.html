@@ -4,14 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Chat</title>
+    <title>AI Assistant</title>
 
+    <!-- App CSS -->
     <link rel="stylesheet" href="{{ url_for('static',  filename='css/app.css') }}">
 </head>
 
 <body>
+    <!-- Header -->
     <header class="header">
         <div class="container">
+            <!-- Dropdown -->
             <div class="dropdown">
                 <button class="btn-unstyled dropdown__btn" id="aiSwitcher">
                     <span class="dropdown__btn__text"> Grumpy AI</span>
@@ -31,19 +34,24 @@
         </div>
     </header>
 
+    <!-- Main -->
     <main class="main">
         <div class="main__inner">
+            <!-- Chatbox -->
             <div class="chatbox">
                 <div class="chatbox__inner">
                     <div class="container">
-                        <ul class="chatbox__list" id="chatbox"></ul>
+                        <ul class="chatbox__list" id="chatbox">
+                            <!-- Input and Output will show here -->
+                        </ul>
                     </div>
                 </div>
             </div>
 
-
+            <!-- User Input -->
             <div class="user-input">
                 <div class="container">
+                    <!-- User Input form -->
                     <form method="POST" action="#" class="user-input__form" id="userInputForm">
                         <div class="input-group">
                             <div class="preview" id="preview"></div>
@@ -83,6 +91,7 @@
         </div>
     </main>
 
+    <!-- App Script -->
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 

@@ -20,62 +20,6 @@ html {
     }
 }
 
-.chatbox {
-    flex: 1 1 0%;
-    overflow: hidden;
-
-    &,
-    &__inner,
-    .container {
-        height: 100%;
-    }
-
-    &__inner {
-        overflow-y: auto;
-        scrollbar-width: none;
-    }
-
-    &__list {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        margin: 0;
-        padding: 15px 0;
-        list-style: none;
-        gap: 15px;
-        min-height: 100%;
-
-        li {
-            padding: 15px;
-            border: 1px solid rgba(0, 0, 0, .1);
-            box-shadow: 0 0 4px rgba(0, 0, 0, .1);
-            display: flex;
-            align-self: flex-start;
-            border-radius: 10px;
-            align-items: flex-start;
-            gap: 10px;
-
-            svg {
-                border: 1px solid rgba(0, 0, 0, 0.1);
-                padding: 2px;
-                min-width: 24px;
-                height: 24px;
-                border-radius: 50%;
-            }
-
-            &:nth-child(odd) {
-                align-self: flex-end;
-                flex-direction: row-reverse;
-                border-right: 4px solid #082567;
-            }
-
-            &:nth-child(even) {
-                border-left: 4px solid #082567;
-            }
-        }
-    }
-}
-
 .user-input {
     width: 100%;
     margin-bottom: 50px;

@@ -212,7 +212,12 @@ hr {
   opacity: 0.25;
 }
 
-h6, h5, h4, h3, h2, h1 {
+h6,
+h5,
+h4,
+h3,
+h2,
+h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-weight: 500;
@@ -355,7 +360,8 @@ a:hover {
   --bs-link-color-rgb: var(--bs-link-hover-color-rgb);
 }
 
-a:not([href]):not([class]), a:not([href]):not([class]):hover {
+a:not([href]):not([class]),
+a:not([href]):not([class]):hover {
   color: inherit;
   text-decoration: none;
 }
@@ -645,12 +651,14 @@ progress {
   visibility: hidden;
 }
 
+/* Button */
 .btn-unstyled {
   border: 0;
   padding: 0;
   background-color: transparent;
 }
 
+/* Header */
 .header {
   padding: 10px 15px;
   position: sticky;
@@ -660,6 +668,7 @@ progress {
   background-color: #fff;
 }
 
+/* Dropdown */
 .dropdown {
   display: inline-block;
   cursor: pointer;
@@ -707,26 +716,7 @@ progress {
   color: light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
 }
 
-body,
-html {
-  height: 100%;
-}
-
-.container {
-  max-width: 768px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-.main {
-  height: calc(100% - 55px);
-}
-.main__inner {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
+/* Chatbox */
 .chatbox {
   flex: 1 1 0%;
   overflow: hidden;
@@ -775,6 +765,26 @@ html {
   border-left: 4px solid #082567;
 }
 
+body,
+html {
+  height: 100%;
+}
+
+.container {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.main {
+  height: calc(100% - 55px);
+}
+.main__inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .user-input {
   width: 100%;
   margin-bottom: 50px;
@@ -784,30 +794,22 @@ html {
   display: flex;
   gap: 20px;
 }
-
-.preview-item {
+.preview__item {
   display: flex;
   align-items: center;
   position: relative;
   margin-bottom: 20px;
 }
-
-.preview-item img {
+.preview__item img {
   width: 100px;
   height: 100px;
-  /* height: auto; */
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   object-fit: cover;
 }
-
-.preview-item button {
-  /* padding: 5px 10px; */
-  /* background-color: #dc3545; */
-  /* color: white; */
-  /* border: none; */
+.preview__item button {
   border-radius: 50%;
   cursor: pointer;
   position: absolute;
@@ -824,7 +826,7 @@ html {
   transform: translate(4px, -4px);
   transition: background-color 0.2s ease-out;
 }
-.preview-item button:hover {
+.preview__item button:hover {
   background-color: rgb(255, 255, 255);
 }
 
