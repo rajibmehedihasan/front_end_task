@@ -35,3 +35,7 @@ To run this application using Docker, follow these steps:
     ```
 
 The app will be accessible at `http://127.0.0.1:5000`.
+
+## Important
+
+**Never forget to keep your `.env` file in the root directory. This file should contain your environment variables.**
