@@ -1,0 +1,26 @@
+body,
+html {
+    height: 100%;
+}
+
+.container {
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.main {
+    height: calc(100% - 55px);
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+    }
+}
+
+.user-input {
+    width: 100%;
+    margin-bottom: 50px;
+}

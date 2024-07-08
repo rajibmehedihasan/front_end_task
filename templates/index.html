@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant</title>
+
+    <!-- App CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',  filename='css/app.css') }}">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <!-- Dropdown -->
+            <div class="dropdown">
+                <button class="btn-unstyled dropdown__btn" id="aiSwitcher">
+                    <span class="dropdown__btn__text"> Grumpy AI</span>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-chevron-down" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                    </svg>
+                </button>
+
+                <ul class="dropdown__options">
+                    <li><button class="btn-unstyled" data-assistant="grumpy" disabled>Grumpy AI</button></li>
+                    <li><button class="btn-unstyled" data-assistant="poet">Poet AI</button></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="main">
+        <div class="main__inner">
+            <!-- Chatbox -->
+            <div class="chatbox">
+                <div class="chatbox__inner">
+                    <div class="container">
+                        <ul class="chatbox__list" id="chatbox">
+                            <!-- Input and Output will show here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Input -->
+            <div class="user-input">
+                <div class="container">
+                    <!-- User Input form -->
+                    <form method="POST" action="#" class="user-input__form" id="userInputForm">
+                        <div class="input-group">
+                            <div class="preview" id="preview"></div>
+
+                            <div class="input-group__inner">
+                                <div class="input-group__input">
+                                    <textarea name="userInput" id="userInput" placeholder="Type your message..."
+                                        required></textarea>
+                                </div>
+
+                                <div class="file-input">
+                                    <label class="file-input__label">
+                                        <svg width="34" height="36" viewBox="0 0 34 36" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M11.8093 3.60437C16.7138 -1.09033 24.6439 -1.09033 29.5485 3.60437C34.4838 8.32858 34.4838 16.0116 29.5485 20.7358L16.3017 33.4159C12.8183 36.7503 7.1922 36.7503 3.70876 33.4159C0.194487 30.0519 0.194485 24.5744 3.70876 21.2104L16.7649 8.71287C18.8273 6.73875 22.1493 6.73875 24.2117 8.71287C26.3048 10.7165 26.3048 13.9886 24.2117 15.9922L11.0602 28.581C10.5615 29.0584 9.77022 29.0411 9.29285 28.5424C8.81548 28.0437 8.83278 27.2524 9.33148 26.7751L22.4829 14.1863C23.5477 13.167 23.5477 11.5381 22.4829 10.5188C21.3873 9.47009 19.5893 9.47009 18.4936 10.5188L5.43747 23.0164C2.95158 25.396 2.95158 29.2304 5.43747 31.6099C7.95419 34.0189 12.0563 34.0189 14.573 31.6099L27.8198 18.9299C31.7267 15.19 31.7267 9.15017 27.8198 5.41035C23.882 1.64101 17.4758 1.64101 13.538 5.41035L2.86436 15.6273C2.36565 16.1047 1.57438 16.0874 1.09701 15.5887C0.619643 15.09 0.636939 14.2987 1.13565 13.8214L11.8093 3.60437Z"
+                                                fill="#02040F" />
+                                        </svg>
+                                        <input class="file-input__input" type="file" name="file" id="fileInput"
+                                            multiple />
+                                    </label>
+                                </div>
+
+                                <button class="btn-unstyled" id="sendButton">
+                                    <svg width="36" height="34" viewBox="0 0 36 34" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M13.4651 3.5875L24.7411 8.66072C28.1688 10.2029 30.8665 11.4165 32.6965 12.5659C34.5041 13.7011 35.9166 15.047 35.9166 17C35.9166 18.953 34.5041 20.299 32.6965 21.4342C30.8665 22.5835 28.1688 23.7972 24.7411 25.3393L13.4651 30.4125C11.37 31.3551 9.74022 32.0884 8.4676 32.5643C7.22228 33.03 6.1093 33.3358 5.11966 33.2282C2.7193 32.9672 0.653805 31.3212 0.153906 28.9973C-0.0579672 28.0124 0.238293 26.9106 0.663947 25.7661C1.10467 24.581 1.80514 23.0594 2.69751 21.1209L2.72157 21.0686C3.41901 19.5535 3.68741 18.9557 3.82437 18.3593C4.03038 17.4621 4.03038 16.5379 3.82437 15.6407C3.68741 15.0443 3.41901 14.4465 2.72157 12.9314L2.69751 12.8792C1.80513 10.9407 1.10467 9.41906 0.663946 8.23397C0.238292 7.0894 -0.057967 5.98761 0.153908 5.0027C0.653808 2.67888 2.7193 1.03287 5.11966 0.771848C6.1093 0.664232 7.22228 0.970061 8.4676 1.43574C9.74022 1.91163 11.37 2.64491 13.4651 3.5875ZM7.59196 3.77738C6.36833 3.31981 5.74323 3.21878 5.38993 3.2572C3.90982 3.41815 2.84092 4.39924 2.598 5.52847C2.5528 5.73858 2.58436 6.22567 3.00716 7.36256C3.41093 8.44831 4.07091 9.88406 4.99251 11.886C5.0127 11.9299 5.03265 11.9732 5.05237 12.0161C5.67072 13.3589 6.05914 14.2024 6.26095 15.0812C6.55152 16.3466 6.55152 17.6534 6.26095 18.9188C6.05914 19.7977 5.67072 20.6412 5.05236 21.984C5.03265 22.0268 5.01269 22.0701 4.99251 22.114C4.07091 24.116 3.41093 25.5517 3.00716 26.6375C2.58436 27.7744 2.5528 28.2614 2.59799 28.4716C2.84091 29.6008 3.90982 30.5819 5.38993 30.7428C5.74323 30.7812 6.36833 30.6802 7.59196 30.2227C8.77915 29.7787 10.3349 29.0795 12.4845 28.1123L23.6143 23.1049C27.1648 21.5075 29.7018 20.3628 31.3669 19.3171C33.0725 18.2459 33.4166 17.5501 33.4166 17C33.4166 16.45 33.0725 15.7541 31.3669 14.683C29.7018 13.6372 27.1648 12.4925 23.6143 10.8951L12.4845 5.8877C10.3349 4.92056 8.77916 4.22132 7.59196 3.77738Z"
+                                            fill="#02040F" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- App Script -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+
+</html>
